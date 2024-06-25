@@ -1,7 +1,7 @@
 **考试微助教需要用电脑，用手机不方便而且会出现问题。**
  
 **不要使用粘贴！！不要使用粘贴！！不要使用粘贴！！**
-即使能成功粘贴到输入框，这部分输入也会被屏蔽，会造成考试交白卷的尴尬情况！！
+即使能成功粘贴到输入框，这部分输入也会被屏蔽，会造成考试交白卷的尴尬情况！！手敲时间是足够的
 
 课本[可信计算技术原理与应用 (sciencereading.cn)](https://book.sciencereading.cn/shop/book/Booksimple/show.do?id=BD5FF2F75D8C6452EB1AA529CBAE80C74000)
 下载pdf:根目录有下载好的老版，或者参考[how to download pdf](https://shiftw041.github.io/site/posts/HowToDownloadScienceReadingBook/)
@@ -12,7 +12,7 @@ https://blog.csdn.net/kaarwen/article/details/124807889
 [郑大信安总结](https://blog.csdn.net/Trieyes_of_feng/article/details/125324920)
 
 
-# 汇总：
+# 参考资料汇总：
 ## TPM概念
 1. Storage Keys：存储密钥，用来加密数据和其它密钥的通用非对称密钥，这里的其它密钥可以是另外一个存储密钥，也可以是绑定密钥或签名密钥。它本身是长度2048bit的RSA私钥；它既可以是可迁移密钥，也可以是不可迁移密钥。
 
@@ -105,7 +105,7 @@ EK可以通过密钥生成服务器，采用两种方法来产生：一种使用
 Reset操作：发生在机器断电或者重新启动之后，PCR的值自动重新清零。
 
 Extend操作：在系统运行过程中，只能通过扩展操作来改变PCR的内容。
-![alt text](image.png)
+![alt text](/assets/image.png)
 
 5）为什么PCR Extend操作可以抵御攻击？
 1、扩展操作不可逆，先扩展度量值A再扩展度量值B得到的PCR的值跟先扩展B再扩展A的结果不同。
@@ -166,7 +166,7 @@ CRTM是Core root of trust for measurement，即核心可信度量根。
 不可迁移？
 
 15）如何借助Seal功能保护数据安全？
-![alt text](image-1.png)
+![alt text](/assets/image-1.png)
 在密封中，把信息M与TPM的一个状态关联起来，只有当TPM的状态与密封时的状态相同时，才有可能把密封过的信息恢复到原来的信息。换言之，当且仅当密封时的TPM状态与解密封时的TPM状态相同时，解密封操作才能成功。
 
 16）什么是Binding Keys？主要用途是什么？
@@ -177,7 +177,7 @@ CRTM是Core root of trust for measurement，即核心可信度量根。
 不可迁移密钥
 
 17）描述一下远程证明的过程？
-![alt text](image-2.png)
+![alt text](/assets/image-2.png)
 
 1. 远程挑战者请求一次摘要，对可信平台客户端发起挑战请求，指定PCR寄存器编号并发送随机数nonce（以防止重放攻击）
 2. 配置TPM的客户端与TSS交互，载入AIK，调用Tspi_TPM_Quote接口对指定的PCR签名
@@ -226,7 +226,7 @@ PKI可以证明公钥和身份的对应关系。证书包含公钥信息，可�
 
 8. TPM是如何报告平台状态的?
    远程报告和本地报告
-   ![alt text](image-3.png)
+   ![alt text](/assets/image-3.png)
 
 
 9.  描述TPM可迁移密钥和不可迁移密钥的定义,哪种密钥更安全,为什么?能否相互转换?
@@ -239,7 +239,7 @@ reset操作：静态可信度量时，平台重启（如开关机）时发生。
 extend操作：任何有管理员权限的人都可以执行。（公式可能是下一题中的公式，能发起measurement的人就能扩展）
 
 11. 为什么PCR- Extend操作可以抵御攻击?
-![alt text](image-4.png)
+![alt text](/assets/image-4.png)
 
 12. TFM密们有哪几种参数，共有多种不同的类型?简要描述使用一个自密钥的过程?
     因为TPM的空间非常有限，有很多密钥在TPM外部，才有了这样的分类。
@@ -269,7 +269,7 @@ TPM密钥的4个属性（或者叫四个参数）：1.load时需要PCR吗？ 2.�
     TPM部分回滚。PCR回滚（保证一致性），而密钥不回滚（已经过期的密钥不再使用，新产生的密钥不会丢失）。此外，增加两组不会回滚的PCR，用来记录回滚记录（包括快照时间、快照时的TPM）。
 
 20. 描述下图密钥加载的过程?
-![alt text](image-9.png)
+![alt text](/assets/image-9.png)
 使用Key Manager加载签名密钥到TPM中。
 签名密钥被加载到Endorsement Key下，以便TPM可以进行签名操作。
 密钥通过RSA算法进行操作，确保数据的安全性。
@@ -280,20 +280,20 @@ TPM密钥的4个属性（或者叫四个参数）：1.load时需要PCR吗？ 2.�
 21. 描述静态可信度量根的几个问题?易用性、可扩展性、度量时机、包容性。
 易用性是指，挑战者发起挑战时，需要重启才能证明安全。
 包容性，win、linux等系统的TCB定义并没有考虑可信计算，使得信任链很庞大。
-![alt text](image-5.png) 
+![alt text](/assets/image-5.png) 
 
 1.  德国研究者发现TPM1.0的3个缺陷?
-![alt text](image-6.png)
+![alt text](/assets/image-6.png)
 
 1.  动态可信度量根如何消除缺陷1和2?
-![alt text](image-7.png) 
+![alt text](/assets/image-7.png) 
 
 1.  如何消除缺陷3?
 动态可信度量新增8个PCR，初始值为-1（ffff全1），从LPC总线攻击只能使之为ffff全1，而不能模拟CPU的指令。只有从CPU发出的指令（如SKINIT）能使它们变为0。初值不同，攻击者很难hash出一样的结果。
 
 1.  TFM1.2有多少Locality?作用?
     5个
-![alt text](image-8.png)
+![alt text](/assets/image-8.png)
 
 1.  描述AMO 的SVM如何构建动态信任链?
 首先通过SKINIT指令构建DRTM（PCR17中的值），然后再度量-扩展逐步构建信任链。
@@ -329,10 +329,10 @@ TPM1.2不适用于云计算的场景，因此提出vTPM。
     用共享内存代替网络来传递TPM指令，提高效率
 
 34. 根据图简述如何实现密钥从一个tpm平台迁移到另一个tpm平台
-![alt text](image-10.png)
-![alt text](image-11.png)
-![alt text](image-12.png)
-![alt text](image-13.png)
+![alt text](/assets/image-10.png)
+![alt text](/assets/image-11.png)
+![alt text](/assets/image-12.png)
+![alt text](/assets/image-13.png)
 直接移植方案：
     1. 密钥对生成：在平台1（目的地）上，生成一对密钥，通常称为KMIG，包括公钥PKMIG和私钥SKMIG。
     2. 密钥对生成：在平台2（来源）上，也生成一对密钥，称为Kstonge，包括公钥PKstorage和私钥SKstorage。
@@ -354,24 +354,40 @@ TPM1.2不适用于云计算的场景，因此提出vTPM。
     7. 接着，平台1使用迁移密钥和随机字符串STRINGRAND，通过TPM_ConvertMigration转换MigBlob'生成密钥封装KeyBlob。
     8. 最后，平台1使用TPM_LoadKey加载密钥封装KeyBlob，并恢复出私钥SKMIG，完成密钥移植，此时平台1上的密钥对KMG为(PKMIG, SKMIG)。
 此方案中，移植权威MA的参与确保了密钥迁移的安全性和授权性，通过授权票据和迁移密钥的使用，实现了密钥从平台2到平台1的安全迁移。
-1.  
 
 
 
+
+# 期末考
+## 大题
+1. 详细说明图标出的签名密钥的使用流程，包括装载和使用中涉及的各种授权方式
+   ![alt text](/assets/image-18.png)
+2. 
 ## 填空
-常见的hash算法有SHA-256（国外）、SM3（国内），hash算法具有单向性/不可逆的特征。
+常见的hash算法有SHA-256（国外）、SM3（国内），hash算法具有_不可逆_的特征。
 可信度量中，度量的结果由TPM扩展操作（TPM_Extend）存储到PCRs中。
-TPM 1.0有16个PCR，初始值是0，TPM 1.2新增了8个PCR，初始值是1。
-![alt text](image-15.png)
-![alt text](image-16.png)
+TPM 1.0有16个PCR，初始值是0，TPM 1.2新增了8个PCR，初始值是1。动态可信度量中是-1
+![alt text](/assets/image-15.png)
+![alt text](/assets/image-16.png)
 可信平台芯片TPM与CPU的连接方式?LPC总线
-DRTM的关键是引入一条新的CPU指令，这条指令用来创建一个受控和可证明的执行环境，从而保证这条指令执行之后Secure Loader能够不被篡改的执行。
-![alt text](image-14.png)
+DRTM的关键是引入一条新的CPU指令，这条指令用来创建一个_受控和可证明的执行环境_，从而保证这条指令执行之后Secure Loader能够不被篡改的执行。
+![alt text](/assets/image-14.png)
 远程证明（Remote Attestation）中，AIK（Attestation Identity Key）证书所对应的私钥被用作对平台状态（Platform Configuration）进行签名操作。
-有了EK还需要AIK的原因是_身份验证和证明___、__密钥对的多样性和专用性__。
+有了EK还需要AIK的原因是_身份验证和证明??___、____密钥对的多样性和专用性??__。
 远程证明用随机数nonce防止重放攻击
-
+远程证明中，AIK证书所对应的私钥被用作对__PCR值__进行签名操作？
+不可迁移密钥定义：
 
 ## 选择
+选择貌似错了一个以上？which？
 关于TCG软件栈的设计目标，下列说法不正确的是（C）++请选择你的答案++TSS提供对TPM的同步访问+++TSS为应用程序调用TPM功能提供一个入口点+++**TSS向应用程序展现TPM的命令流**+++TSS提供对TPM资源进行管理的功能
+中国可信计算标准中的可信密码模块TCM中不支持的算法：RSA
+![alt text](/assets/image-17.png) D
+![alt text](/assets/image-19.png) C
+![alt text](/assets/image-20.png) D
+![alt text](/assets/image-21.png) D
+![alt text](/assets/image-22.png) A
+![alt text](/assets/image-23.png) B？？
+
+
 
