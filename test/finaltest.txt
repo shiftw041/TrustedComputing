@@ -1,0 +1,15 @@
+1. AC-Module如何验证?
+    intel CPU特有的动态可信度量模块，在CPU中存放intel的公钥的hash值，确保ac module的公钥没有被篡改，然后用公钥验证ac module未经篡改。
+2.  描述Intel的TXT动态可信度量的流程和特点 如何构建动态信任链?
+    特点是：增加了一个认证的代码模块AC；利用启动控制策略架构LCP来验证启动过程
+    
+    TXT的执行过程主要由以下四部分组成：经过度量的启动；MLE的初始化；MLE运转；MLE销毁
+    确保执行环境没有受到不可信应用的监视，将AC module和MLE加载到内存中，调用GETSEC[SENTER]指令，处理器验证ac module的签名然后执行ac module，ac module度量MLE并将结果送到TPM，启动MLE。
+
+
+如何解决三个缺点
+1和2. 动态可信度量的信任链移除了BIOS及其配置，可选ROM及其配置以及由于bugs带来漏洞的bootloader。而且动态可信度量可以开始于任何时机且不用重新启动整个平台。
+3. 动态可信度量新增8个PCR，初始值为-1（ffff全1），从LPC总线攻击只能使之为ffff全1，而不能模拟CPU的指令。只有从CPU发出的指令（如SKINIT）能使它们变为0。初值不同，攻击者很难hash出一样的结果。
+
+
+远程证明中，AIK证书所对应的私钥被用作对PCR值进行签名操作？
